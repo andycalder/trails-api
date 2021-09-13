@@ -1,10 +1,13 @@
+require 'open-uri'
+
 class UpdateTrailsJob < ApplicationJob
   queue_as :default
 
   def perform
-    puts 'Updating trails...'
-    sleep 3
-    puts 'Finished updating trails.'
+    UpdateTrailsJob.update_trails
+
+    # Enqueue the job again
+    UpdateTrailsJob.set(wait: 1.hour).perform_later
   end
 
   def self.fetch_json

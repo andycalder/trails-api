@@ -14,7 +14,7 @@ class Trail < ApplicationRecord
     if props['type'] && %w(technical freeride).include?(props['type'])
       record = Trail.find_or_initialize_by(mapbox_id: feature['id'])
 
-      record.update_attributes(
+      record.update(
         name: props['name'],
         difficulty: props['difficulty'].capitalize,
         category: props['type'].capitalize,
