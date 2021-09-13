@@ -11,7 +11,7 @@ class Api::V1::TrailsController < ApplicationController
       {
         name: trail.name,
         difficulty: trail.difficulty,
-        type: trail.category,
+        category: trail.category,
         zone: trail.zone,
         start: [trail.start_lng, trail.start_lat]
       }
